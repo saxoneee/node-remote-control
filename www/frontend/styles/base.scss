@@ -1,0 +1,50 @@
+* {
+	padding:0;
+	margin:0;
+}
+
+body{
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1))); /* Chrome,Safari4+ */
+	background-attachment:fixed;
+	color:#eee;
+	font-family:Helvetica;
+}
+
+body, html{
+	height:100%; 
+}
+
+.hidden{
+	display:none !important;
+}
+
+.clearfix{
+	clear:both;
+}
+
+#main{
+	display:flex;
+	height:100%;
+	width:100%;
+	flex-direction:row;
+}
+
+.button-fullsize{
+	display:flex;
+
+	& .button{
+		flex:1;
+	}
+}
+
+.button{
+	background:rgba(143,2,34,1);
+	padding:10px;
+	color:#fff;
+	border:0;
+	cursor:pointer;
+
+	&[disabled=disabled]{
+		background:grey;
+	}
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node remote control</title>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1" />
+	<link href="/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/jquery-touchswipe/jquery.touchSwipe.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<link href="/styles/remote-control.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/io.js"></script>
+
+</head>
+<body>
+	<div id="splash">
+        <div class="inner">
+            <div class="bg"></div>
+            <div class="content">
+                <h1>node remote control</h1>
+                <p class="label">node.js remote control</p>
+                <i class="loading fa fa-spin fa-cog"></i>
+        		<p id="appLoadingIndicatorLabel">node remote control wird gestartet...</p>
+            </div>
+        </div>
+	</div>
+
+	<div id="controls" class="hidden">
+		<div id="mousepad" class="tapused">
+
+		</div>
+
+		<div id="menu">
+		</div>
+	</div>
+</body>
+</html>

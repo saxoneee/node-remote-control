@@ -1,0 +1,72 @@
+
+#splash{ 
+	height:100%;
+	text-align:center;
+	color:#eee;
+	overflow:hidden;
+	position:relative;
+	z-index:9999;
+	opacity:1;
+}
+#splash .inner{
+	display:inline-block;
+	vertical-align:middle;
+	position:relative;
+	padding:10px;
+	border:1px solid #fff;
+}
+#splash .inner .bg{
+	background:#fff;
+	box-shadow:0 0 10px #B26800 inset;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+#splash .label{
+	font-size:15px;
+	color:#6d0019;
+	margin-bottom:50px;
+}
+
+#splash .loading{
+	color:#888;
+}
+
+#splash:before{
+	content: ' ';
+	height:100%;
+	font-size:0;
+	display:inline-block;
+	vertical-align:middle;
+}
+
+
+#splash .content{
+	z-index:10;
+	position:relative;
+}
+
+#splash h1{
+		font-size: 40px;
+		font-weight: bold;
+		color:#6d0019;
+		margin-bottom:20px;
+	}
+
+#splash .label{
+		font-size:15px;
+		color:#6d0019;
+		margin-bottom:50px;
+	}
+
+#splash #appLoadingIndicatorLabel{
+		font-size:10px;
+		color:#888;
+	}
+
+#splash img{
+		margin-bottom:10px;
+	}

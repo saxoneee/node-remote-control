@@ -1,0 +1,9 @@
+{
+	"name": "node remote control",
+	"version": "0.0.1",
+	"dependencies": {
+		"jquery": "2.1.4",
+		"fontawesome": "4.6.1",
+		"jquery-touchswipe": "^1.6.18"
+	}
+}

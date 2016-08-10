@@ -1,0 +1,33 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "jquery": true
+    },
+    "globals": {
+        "app": true,
+        "socket": true,
+        "__stack": true,
+        "__line": true,
+        "log":true
+
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            2, 
+            "tab", 
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
