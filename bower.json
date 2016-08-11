@@ -1,5 +1,5 @@
 {
-	"name": "node remote control",
+	"name": "node-remote-control",
 	"version": "0.0.1",
 	"dependencies": {
 		"jquery": "2.1.4",
