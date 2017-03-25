@@ -14,7 +14,7 @@ body, html{
 	height:100%; 
 }
 
-.hidden{
+.hidden,[hidden]{
 	display:none !important;
 }
 
@@ -22,29 +22,9 @@ body, html{
 	clear:both;
 }
 
-#main{
+body{
 	display:flex;
 	height:100%;
 	width:100%;
-	flex-direction:row;
-}
-
-.button-fullsize{
-	display:flex;
-
-	& .button{
-		flex:1;
-	}
-}
-
-.button{
-	background:rgba(143,2,34,1);
-	padding:10px;
-	color:#fff;
-	border:0;
-	cursor:pointer;
-
-	&[disabled=disabled]{
-		background:grey;
-	}
+	flex-direction:column;
 }

@@ -34,8 +34,35 @@ module.exports = function() {
 			robot.mouseClick('left', true);
 			pResponder();
 		},
+		rtap: function(pEventArgs, pResponder) {
+			robot.mouseClick('right');
+			pResponder();
+		},
 		hold: function(pEventArgs, pResponder) {
 			robot.mouseClick('right');
+			pResponder();
+		},
+		scroll: function(pEventArgs, pResponder) {
+			var _direction, _distance;
+			switch (pEventArgs.direction) {
+				case 'vertical':
+					if (pEventArgs.top < 0) {
+						_direction = 'up';
+					} else {
+						_direction = 'down';
+					}
+					_distance = Math.abs(pEventArgs.top);
+					break;
+				case 'horizontal':
+					if (pEventArgs.left < 0) {
+						_direction = 'left';
+					} else {
+						_direction = 'right';
+					}
+					_distance = Math.abs(pEventArgs.left);
+					break;
+			}
+			robot.scrollMouse(_distance, _direction);
 			pResponder();
 		}
 	};

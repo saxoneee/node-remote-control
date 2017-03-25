@@ -21,20 +21,24 @@
             <div class="bg"></div>
             <div class="content">
                 <h1>node remote control</h1>
-                <p class="label">node.js remote control</p>
-                <i class="loading fa fa-spin fa-cog"></i>
-        		<p id="appLoadingIndicatorLabel">node remote control wird gestartet...</p>
+                <div id="loading-msg">
+	                <i class="loading fa fa-spin fa-cog"></i>
+	        		<p id="appLoadingIndicatorLabel">node remote control wird gestartet...</p>
+        		</div>
             </div>
         </div>
 	</div>
 
-	<div id="controls" class="hidden">
-		<div id="mousepad" class="tapused">
+	<div id="controls" hidden>
+		<div id="mousepadcontrols">
+			<div id="mousepadcontrols-left"></div>
+			<div id="mousepadcontrols-wheel"></div>
+			<div id="mousepadcontrols-right"></div>
+		</div>
+		<div id="mousepad">
 
 		</div>
-
-		<div id="menu">
-		</div>
+		
 	</div>
 </body>
 </html>

@@ -39,7 +39,13 @@ app.socket = socket.init(app.server, {
 	dtap: function(pEventArgs, pResponder) {
 		app.modules.robot.dtap(pEventArgs, pResponder);
 	},
+	rtap: function(pEventArgs, pResponder) {
+		app.modules.robot.rtap(pEventArgs, pResponder);
+	},
 	hold: function(pEventArgs, pResponder) {
 		app.modules.robot.hold(pEventArgs, pResponder);
+	},
+	scroll: function(pEventArgs, pResponder) {
+		app.modules.robot.scroll(pEventArgs, pResponder);
 	}
 });
