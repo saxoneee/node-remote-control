@@ -1,11 +1,11 @@
-var app = app || {};
+var nrc = nrc || {};
 
-(function(app) {
+(function(main) {
 
 	/**
 	 * namespaces
 	 */
-	app.server = {};
+	main.server = {};
 
 	/**
 	 * privates
@@ -20,7 +20,7 @@ var app = app || {};
 
 		_splashMessage.html('load config...');
 		$.get('/rest/config', function(pConfig) {
-			app.server.config = pConfig;
+			main.server.config = pConfig;
 			_splashMessage.html('login...');
 			_login(function() {
 				_loginCompleted();
@@ -33,28 +33,28 @@ var app = app || {};
 	 */
 	var _login = function(pCallback) {
 		$.get('/rest/user/login', function(pUser) {
-			console.log('logged in as', pUser);
+			main.utils.log('logged in as', pUser);
 
-			socket.init(function() {
+			main.socket.init(function() {
 				pCallback();
 
-				_sockets.swipe = socket.createEventSocket('swipe');
-				_sockets.swipe.listen(function(args) {
+				_sockets.swipe = main.socket.createEventSocket('swipe');
+				_sockets.swipe.listen(function() {
 					$('#mousepad').removeClass('used');
 				});
 
-				_sockets.tap = socket.createEventSocket('tap');
-				_sockets.tap.listen(function(args) {
+				_sockets.tap = main.socket.createEventSocket('tap');
+				_sockets.tap.listen(function() {
 					$('#mousepad').removeClass('tapused');
 				});
 
-				_sockets.dtap = socket.createEventSocket('dtap');
-				_sockets.dtap.listen(function(args) {
+				_sockets.dtap = main.socket.createEventSocket('dtap');
+				_sockets.dtap.listen(function() {
 					$('#mousepad').removeClass('tapused');
 				});
 
-				_sockets.hold = socket.createEventSocket('hold');
-				_sockets.hold.listen(function(args) {
+				_sockets.hold = main.socket.createEventSocket('hold');
+				_sockets.hold.listen(function() {
 					$('#mousepad').removeClass('tapused');
 				});
 			});
@@ -72,14 +72,14 @@ var app = app || {};
 			var _cursorStartPosTop = null;
 			var _cursorStartPosLeft = null;
 			$('#mousepad').swipe({
-				swipe: function(a, b, c) {
+				swipe: function() {
 					_sockets.swipe.fire('end');
 					_swipeCounter = 0;
 					_cursorStartPosTop = null;
 					_cursorStartPosLeft = null;
 				},
 
-				swipeStatus: function(event, phase, direction, distance, duration, fingers, fingerData, currentDirection) {
+				swipeStatus: function(event, phase) {
 					// don't throw every new position to the server, he will throw up
 					_swipeCounter++;
 					// if (_swipeCounter % 10 !== 0) {
@@ -135,4 +135,4 @@ var app = app || {};
 			});
 		});
 	};
-})(app);
+})(nrc);

@@ -7,7 +7,7 @@ require('./base/config');
 try {
 	app.config = require('./config.json');
 } catch (e) {
-	console.log('no config found');
+	console.log('no config found'); // eslint-disable-line no-console
 }
 
 var log = new(require(app.path.base + '/logging'))(__filename);

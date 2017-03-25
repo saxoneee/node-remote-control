@@ -13,6 +13,7 @@ module.exports = new restService(function(pUrl, pUrlParams, pSession, pUser, pRe
 
 	switch (_type) {
 		case 'login':
+			log.log('new login detected');
 			app.base.user.login(pSession, function(pUser) {
 				pResponder(JSON.stringify(pUser));
 			});

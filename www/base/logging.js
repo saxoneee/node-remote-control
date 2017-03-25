@@ -10,6 +10,7 @@ var initLogger = function() {
 	if (initialized === true) {
 		return;
 	}
+	logger.info('logging init');
 
 	// // make stack accessible
 	// Object.defineProperty(global, '__stack', {
@@ -66,7 +67,7 @@ var initLogger = function() {
 
 	initialized = true;
 
-	logger.info('logging init');
+	logger.info('logging init completed');
 };
 
 var timestamp = function() {

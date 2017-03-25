@@ -26,7 +26,6 @@ module.exports = function(grunt) {
 				src: [
 					'<%= app.www %>/app.js',
 					'<%= app.www %>/rest/**/*.js',
-					'<%= app.www %>/frontend/**/*.js',
 					'<%= app.www %>/base/**/*.js',
 					'<%= app.www %>/modules/**/*.js',
 					'<%= app.www %>/utils/**/*.js'

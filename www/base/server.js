@@ -11,11 +11,6 @@ var connect = require('connect'),
 var configApi = require(app.path.rest + '/config'),
 	userApi = require(app.path.rest + '/user');
 
-// var ,
-// 	musicApi = require(app.path.rest + '/music'),
-// 	configApi = require(app.path.rest + '/config'),
-// 	imageApi = require(app.path.rest + '/image');
-
 module.exports = {
 	/**
 	 * start the server
@@ -40,9 +35,6 @@ module.exports = {
 		// rest apis
 		_connect.use('/rest/config', configApi);
 		_connect.use('/rest/user', userApi);
-		// _connect.use('/rest/image', imageApi);
-		// _connect.use('/rest/music', musicApi);
-		// _connect.use('/rest/user', userApi);
 
 		// serve frontends
 		for (var i = 0; i < pFrontendPaths.length; i++) {
