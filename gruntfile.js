@@ -8,7 +8,9 @@ module.exports = function(grunt) {
 		app: {
 			www: 'www',
 			tmp: '.tmp',
-			frontend: 'www/frontend'
+			frontend: 'www/frontend',
+			build: 'build',
+			android: 'cordova'
 		},
 
 		copy: {},
@@ -45,6 +47,15 @@ module.exports = function(grunt) {
 		exec: {
 			app: {
 				cmd: 'node <%= app.www %>/app.js'
+			},
+
+			emulator: {
+				cmd: '%ANDROID_HOME%/emulator/emulator.exe -avd Nexus_5X_API_23 -netdelay none -netspeed full'
+			},
+
+			emulate: {
+				cwd: '<%= app.android %>',
+				cmd: 'cordova run android'
 			}
 		},
 
@@ -54,6 +65,12 @@ module.exports = function(grunt) {
 					'<%= app.frontend %>/styles/**/*.scss'
 				],
 				tasks: ['compass']
+			},
+			emulate: {
+				files: [
+					'<%= app.android %>/www/**/*.*'
+				],
+				tasks: ['exec:emulate']
 			}
 		},
 
@@ -78,16 +95,44 @@ module.exports = function(grunt) {
 				options: {
 					logConcurrentOutput: true
 				}
+			},
+			emulate: {
+				tasks: [
+					'exec:app',
+					'watch:frontendStyles',
+					'exec:emulate',
+					'watch:emulate'
+				],
+				options: {
+					logConcurrentOutput: true
+				}
 			}
 		}
 	});
 
-	grunt.registerTask('dev', [
+	grunt.registerTask('_prepare', [
 		'clean:tmp',
 		'compass',
-		'eslint',
+		'eslint'
+	]);
+
+	grunt.registerTask('dev', [
+		'_prepare',
 		'concurrent:dev'
 	]);
+
+	grunt.registerTask('emulate', [
+		'_prepare',
+		'concurrent:emulate'
+	]);
+
+	grunt.registerTask('emulator', [
+		'exec:emulator'
+	]);
+
+	// grunt.registerTask('build', [
+
+	// ]);
 
 	grunt.registerTask('default', ['dev']);
 };
