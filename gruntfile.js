@@ -5,15 +5,25 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('gruntify-eslint');
 
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+
 		app: {
 			www: 'www',
 			tmp: '.tmp',
 			frontend: 'www/frontend',
 			build: 'build',
-			android: 'cordova'
+			android: {
+				root: 'cordova',
+				build: '<%= app.android.root %>/platforms/android/build/outputs/apk/android-release-unsigned.apk'
+			}
 		},
 
-		copy: {},
+		copy: {
+			android: {
+				src: ['<%= app.android.build %>'],
+				dest: '<%= app.build %>/<%= pkg.name %>.apk'
+			}
+		},
 
 		clean: {
 			tmp: '<%=app.tmp %>'
@@ -54,8 +64,13 @@ module.exports = function(grunt) {
 			},
 
 			emulate: {
-				cwd: '<%= app.android %>',
+				cwd: '<%= app.android.root %>',
 				cmd: 'cordova run android'
+			},
+
+			buildAndroid: {
+				cwd: '<%= app.android.root %>',
+				cmd: 'cordova build android --release'
 			}
 		},
 
@@ -68,7 +83,7 @@ module.exports = function(grunt) {
 			},
 			emulate: {
 				files: [
-					'<%= app.android %>/www/**/*.*'
+					'<%= app.android.root %>/www/**/*.*'
 				],
 				tasks: ['exec:emulate']
 			}
@@ -130,9 +145,10 @@ module.exports = function(grunt) {
 		'exec:emulator'
 	]);
 
-	// grunt.registerTask('build', [
-
-	// ]);
+	grunt.registerTask('build', [
+		'exec:buildAndroid',
+		'copy:android'
+	]);
 
 	grunt.registerTask('default', ['dev']);
 };
