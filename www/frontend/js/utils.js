@@ -25,7 +25,7 @@
 		},
 
 		log: function() {
-			console.log.apply(null, arguments); // eslint-disable-line no-console
+			console.log.apply(console, arguments); // eslint-disable-line no-console
 		}
 	};
 

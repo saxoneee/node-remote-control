@@ -1,6 +1,6 @@
 # node remote control
 
-simple node.js app to remotly control the mouse cursor of windows with a mobile browser.
+simple node.js/android app to remotly control the mouse cursor of windows with a mobile browser.
 
 ## Requirements
 
@@ -10,32 +10,49 @@ simple node.js app to remotly control the mouse cursor of windows with a mobile 
 - windows OS (tested on Win10)
 - android smartphone with chrome browser (I didn't test other browsers yet)
 
+### Android App Emulation
+
+- Cordova 6.5.0
+- Android Studio 2.3
+- jdk 1.8
+- Apache Ant
+- Environment Variables
+    + JAVA_HOME: path/to/jdk1.8
+    + ANDROID_HOME: path/to/android/sdk
+    + ANT_HOME: path/to/ant
+    + add to PATH: %JAVA_HOME%\bin;%ANT_HOME%\bin;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\emulator;
+- run Android Studio
+    + File > Settings > Appearance & Behavior > System Settings > Android SDK
+    + install Android 6.0 (Marshmallow) and accept the terms
+    + import the phonegap project and create an emulator via Android Virtual Device Manager
+        * name "Nexus 5X API 23"
+
 ## Development
 
-- checkout this repository
-- run `npm install` and `bower install`
+- only once:
+    + `npm install`
+    + `bower install`
+- `grunt dev` - browser
+- `grunt emulator` - start android emulator
+- `grunt emulate` - build app and run in emulator
 
 ## Usage
 
-- you may need to open the port (8000) in your firewall settings
-- go to the repository
-- run `grunt dev` or `node www/app.js`
-    + maybe you have to grant network permissions to node.js
-    + if there are no errors, it seems to be running
-- lookup the ip address of your computer (ipconfig in cmd)
-- open a mobile browser and type in that ip, plus port 8000
-    + Example: `192.168.2.103:8000`
-- if the loaded website is red, it's working
 - swipe and watch your cursor dancing
     - **swipe** to move
     - **tap** to single left click
     - **double tap** to double left click
-    - **hold** to right click
+    - **hold** to hold
+    - buttons on top
+        + **left** - tap = left click
+        + **middle** - swipe vertically = scroll wheel
+        + **right** - tap = right click
 
 ## Issues
 
-- this was done in a 4 hour run, so do not expect high performance
 - node might die after excessive usage
+- for now, the phonegap part uses the static local ip 192.168.2.200 for connecting to the server
+    + you may change it in `phonegap/config.xml` and `phonegap/www/index.html`
 
 ## License
 

@@ -5,13 +5,25 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('gruntify-eslint');
 
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+
 		app: {
 			www: 'www',
 			tmp: '.tmp',
-			frontend: 'www/frontend'
+			frontend: 'www/frontend',
+			build: 'build',
+			android: {
+				root: 'cordova',
+				build: '<%= app.android.root %>/platforms/android/build/outputs/apk/android-release-unsigned.apk'
+			}
 		},
 
-		copy: {},
+		copy: {
+			android: {
+				src: ['<%= app.android.build %>'],
+				dest: '<%= app.build %>/<%= pkg.name %>.apk'
+			}
+		},
 
 		clean: {
 			tmp: '<%=app.tmp %>'
@@ -45,6 +57,20 @@ module.exports = function(grunt) {
 		exec: {
 			app: {
 				cmd: 'node <%= app.www %>/app.js'
+			},
+
+			emulator: {
+				cmd: '%ANDROID_HOME%/emulator/emulator.exe -avd Nexus_5X_API_23 -netdelay none -netspeed full'
+			},
+
+			emulate: {
+				cwd: '<%= app.android.root %>',
+				cmd: 'cordova run android'
+			},
+
+			buildAndroid: {
+				cwd: '<%= app.android.root %>',
+				cmd: 'cordova build android --release'
 			}
 		},
 
@@ -54,6 +80,12 @@ module.exports = function(grunt) {
 					'<%= app.frontend %>/styles/**/*.scss'
 				],
 				tasks: ['compass']
+			},
+			emulate: {
+				files: [
+					'<%= app.android.root %>/www/**/*.*'
+				],
+				tasks: ['exec:emulate']
 			}
 		},
 
@@ -78,15 +110,44 @@ module.exports = function(grunt) {
 				options: {
 					logConcurrentOutput: true
 				}
+			},
+			emulate: {
+				tasks: [
+					'exec:app',
+					'watch:frontendStyles',
+					'exec:emulate',
+					'watch:emulate'
+				],
+				options: {
+					logConcurrentOutput: true
+				}
 			}
 		}
 	});
 
-	grunt.registerTask('dev', [
+	grunt.registerTask('_prepare', [
 		'clean:tmp',
 		'compass',
-		'eslint',
+		'eslint'
+	]);
+
+	grunt.registerTask('dev', [
+		'_prepare',
 		'concurrent:dev'
+	]);
+
+	grunt.registerTask('emulate', [
+		'_prepare',
+		'concurrent:emulate'
+	]);
+
+	grunt.registerTask('emulator', [
+		'exec:emulator'
+	]);
+
+	grunt.registerTask('build', [
+		'exec:buildAndroid',
+		'copy:android'
 	]);
 
 	grunt.registerTask('default', ['dev']);
