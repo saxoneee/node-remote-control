@@ -52,8 +52,6 @@ simple node.js/android app to remotly control the mouse cursor of windows with a
 ## Issues
 
 - node might die after excessive usage
-- for now, the phonegap part uses the static local ip 192.168.2.200 for connecting to the server
-    + you may change it in `phonegap/config.xml` and `phonegap/www/index.html`
 
 ## License
 
