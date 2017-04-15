@@ -8,9 +8,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		app: {
-			www: 'www',
+			server: 'server',
 			tmp: '.tmp',
-			frontend: 'www/frontend',
+			frontend: 'frontend',
 			build: 'build',
 			android: {
 				root: 'cordova',
@@ -36,11 +36,11 @@ module.exports = function(grunt) {
 					silent: true
 				},
 				src: [
-					'<%= app.www %>/app.js',
-					'<%= app.www %>/rest/**/*.js',
-					'<%= app.www %>/base/**/*.js',
-					'<%= app.www %>/modules/**/*.js',
-					'<%= app.www %>/utils/**/*.js'
+					'<%= app.server %>/app.js',
+					'<%= app.server %>/rest/**/*.js',
+					'<%= app.server %>/base/**/*.js',
+					'<%= app.server %>/modules/**/*.js',
+					'<%= app.server %>/utils/**/*.js'
 				]
 			},
 			frontend: {
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 
 		exec: {
 			app: {
-				cmd: 'node <%= app.www %>/app.js'
+				cmd: 'node <%= app.server %>/app.js'
 			},
 
 			emulator: {

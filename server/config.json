@@ -6,6 +6,6 @@
 	"frontend": [
 		"../.tmp",
 		"../bower",
-		"frontend"
+		"../frontend"
 	]
 }
