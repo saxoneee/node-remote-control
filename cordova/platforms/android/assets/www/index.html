@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -37,12 +37,11 @@
     </head>
     <body>
         <h1>test</h1>
-        <!-- <iframe src="http://192.168.2.200:8000"></frame> -->
-
         <script type="text/javascript">
-            alert('sadrf');
             document.addEventListener('deviceready', function(){
-                document.body.style.background = 'red';
+                var _url = 'http://192.168.2.200:8000';
+                
+                cordova.InAppBrowser.open(_url,'_self','location=false');
             },false);
 
         </script>
