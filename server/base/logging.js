@@ -2,7 +2,7 @@
 /*eslint no-console: ["error", { allow: ["info", "log", "warn", "error", "debug"] }] */
 var util = require('util'),
 	winston = require('winston'),
-	logger = new winston.Logger(),
+	logger = new winston.createLogger(),
 	production = (process.env.NODE_ENV || '').toLowerCase() === 'production',
 	initialized = false;
 
@@ -10,7 +10,7 @@ var initLogger = function() {
 	if (initialized === true) {
 		return;
 	}
-	logger.info('logging init');
+	// logger.info('logging init');
 
 	// // make stack accessible
 	// Object.defineProperty(global, '__stack', {
@@ -44,7 +44,7 @@ var initLogger = function() {
 			if (production) {
 				// disabling eslint-error for now
 			}
-			logger.add(winston.transports.File, {
+			logger.add(new winston.transports.File(), {
 				filename: app.config.log + '/application.log',
 				handleExceptions: true,
 				exitOnError: false,
@@ -57,7 +57,7 @@ var initLogger = function() {
 			return;
 		default:
 
-			logger.add(winston.transports.Console, {
+			logger.add(new winston.transports.Console(), {
 				colorize: true,
 				timestamp: timestamp,
 				level: app.config.debugLogLevel
