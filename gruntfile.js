@@ -15,7 +15,8 @@ module.exports = function(grunt) {
 			cordova: 'cordova',
 			android: {
 				root: 'cordova',
-				build: '<%= app.android.root %>/platforms/android/build/outputs/apk/android-release-unsigned.apk'
+				build: '<%= app.android.root %>/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk'
+				// build: '<%= app.android.root %>/platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk'
 			}
 		},
 
@@ -71,7 +72,7 @@ module.exports = function(grunt) {
 
 			buildAndroid: {
 				cwd: '<%= app.android.root %>',
-				cmd: '"./node_modules/.bin/cordova" build android --release'
+				cmd: '"'+__dirname+'/node_modules/.bin/cordova" build android --release'
 			}
 		},
 
