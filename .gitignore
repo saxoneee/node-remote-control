@@ -7,5 +7,5 @@ README.html
 bower
 build
 
-cordova/platforms
-cordova/plugins
+platforms
+plugins

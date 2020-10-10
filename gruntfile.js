@@ -8,9 +8,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		app: {
-			server: 'server',
+			server: 'src/serv',
 			tmp: '.tmp',
-			frontend: 'frontend',
+			frontend: 'src/www',
 			build: 'build',
 			cordova: 'cordova',
 			android: {
@@ -106,8 +106,9 @@ module.exports = function(grunt) {
 		concurrent: {
 			dev: {
 				tasks: [
-					'exec:app',
-					'watch:frontendStyles'
+					// 'exec:app',
+					'watch:frontendStyles',
+					'connect:browser'
 				],
 				options: {
 					logConcurrentOutput: true
@@ -122,6 +123,21 @@ module.exports = function(grunt) {
 				],
 				options: {
 					logConcurrentOutput: true
+				}
+			}
+		},
+
+		connect: {
+			browser: {
+				options: {
+					base: [
+						'<%= app.tmp %>',
+						'<%= app.frontend %>',
+						'bower', // deprecated
+					],
+					keepalive: true,
+					port: 8000,
+					hostname:'localhost',
 				}
 			}
 		}

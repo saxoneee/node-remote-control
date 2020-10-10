@@ -1,11 +1,11 @@
 {
 	"mode": "dev",
 	"modules": {},
-	"serverPort": "8000",
+	"serverPort": "8008",
 	"debugLogLevel": "debug",
 	"frontend": [
 		"../.tmp",
 		"../bower",
-		"../frontend"
+		"../www"
 	]
 }
