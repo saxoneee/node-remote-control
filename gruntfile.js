@@ -60,17 +60,17 @@ module.exports = function(grunt) {
 			},
 
 			emulator: {
-				cmd: '%ANDROID_HOME%/emulator/emulator.exe -avd Nexus_5X_API_23 -netdelay none -netspeed full'
+				cmd: '"%ANDROID_SDK_ROOT%/emulator/emulator.exe" -avd Nexus_5X_API_29 -netdelay none -netspeed full'
 			},
 
 			emulate: {
 				cwd: '<%= app.android.root %>',
-				cmd: 'cordova run android'
+				cmd: '"'+__dirname+'/node_modules/.bin/cordova" run android'
 			},
 
 			buildAndroid: {
 				cwd: '<%= app.android.root %>',
-				cmd: 'cordova build android --release'
+				cmd: '"./node_modules/.bin/cordova" build android --release'
 			}
 		},
 

@@ -1,6 +1,6 @@
 # node remote control
 
-simple node.js/android app to remotly control the mouse cursor of windows with a mobile browser.
+simple node.js/android app to remotly control the mouse cursor of windows.
 
 ## Requirements
 
@@ -12,27 +12,28 @@ simple node.js/android app to remotly control the mouse cursor of windows with a
 
 ### Android App Emulation
 
-- Cordova 6.5.0
-- Android Studio 2.3
+- Cordova 10.0.0
+- Android Studio 4.0.2
+- Gradle
 - jdk 1.8
 - Apache Ant
 - Environment Variables
     + JAVA_HOME: path/to/jdk1.8
-    + ANDROID_HOME: path/to/android/sdk
+    + ANDROID_SDK_ROOT: path/to/android/sdk
     + ANT_HOME: path/to/ant
-    + add to PATH: %JAVA_HOME%\bin;%ANT_HOME%\bin;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\emulator;
+    + GRADLE_HOME: path/to/gradle
+    + add to PATH: %JAVA_HOME%\bin;%ANT_HOME%\bin;%ANDROID_SDK_ROOT%\tools;%ANDROID_SDK_ROOT%\platform-tools;%ANDROID_SDK_ROOT%\emulator;%GRADLE_HOME%\bin;
 - run Android Studio
     + File > Settings > Appearance & Behavior > System Settings > Android SDK
-    + install Android 6.0 (Marshmallow) and accept the terms
+    + install Android 10.0 and accept the terms
     + import the phonegap project and create an emulator via Android Virtual Device Manager
-        * name "Nexus 5X API 23"
+        * name "Nexus 5X API 29"
 
 ## Development
 
 - only once:
     + `npm install`
     + `bower install`
-    + `cd cordova && cordova prepare`
 - `grunt dev` - browser
 - `grunt emulator` - start android emulator
 - `grunt emulate` - build app and run in emulator
