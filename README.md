@@ -28,6 +28,7 @@ simple node.js/android app to remotly control the mouse cursor of windows.
     + install Android 10.0 and accept the terms
     + import the phonegap project and create an emulator via Android Virtual Device Manager
         * name "Nexus 5X API 29"
+- open cordova/www/index.html and change the internal ip-address to your own
 
 ## Development
 

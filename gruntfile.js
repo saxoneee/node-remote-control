@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 			tmp: '.tmp',
 			frontend: 'frontend',
 			build: 'build',
+			cordova: 'cordova',
 			android: {
 				root: 'cordova',
 				build: '<%= app.android.root %>/platforms/android/build/outputs/apk/android-release-unsigned.apk'
