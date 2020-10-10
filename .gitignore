@@ -5,6 +5,7 @@ npm-debug.log
 .sass-cache
 README.html
 bower
+build
 
 cordova/platforms
 cordova/plugins
