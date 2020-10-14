@@ -1,16 +1,9 @@
 var nrc = nrc || {};
 
 (function(main) {
-
-	/**
-	 * namespaces
-	 */
-	main.server = {};
-
 	/**
 	 * privates
 	 */
-	var _sockets = {};
 	var _swipeCounter = 0;
 	var _cursorStartPosTop = null;
 	var _cursorStartPosLeft = null;
@@ -24,8 +17,7 @@ var nrc = nrc || {};
 		var _splashMessage = $('#appLoadingIndicatorLabel');
 
 		_splashMessage.html('init...');
-		$.get(_serverUrl + '/init', function(pConfig) {
-			main.server.config = pConfig;
+		$.get(_serverUrl + '/init', function() {
 			_splashMessage.html('login...');
 			_login(function() {
 				_loginCompleted();
@@ -39,40 +31,6 @@ var nrc = nrc || {};
 	var _login = function(pCallback) {
 		$.get(_serverUrl + '/login', function(pUser) {
 			main.utils.log('logged in as', pUser);
-
-			main.socket.init(function() {
-				pCallback();
-
-				_sockets.swipe = main.socket.createEventSocket('swipe');
-				_sockets.swipe.listen(function() {
-					$('#mousepad').removeClass('used');
-				});
-
-				_sockets.tap = main.socket.createEventSocket('tap');
-				_sockets.tap.listen(function() {
-					$('#mousepad').removeClass('tapused');
-				});
-
-				_sockets.dtap = main.socket.createEventSocket('dtap');
-				_sockets.dtap.listen(function() {
-					$('#mousepad').removeClass('tapused');
-				});
-
-				_sockets.rtap = main.socket.createEventSocket('rtap');
-				_sockets.rtap.listen(function() {
-					// $('#mousepadcontrols-right').removeClass('tapused');
-				});
-
-				_sockets.hold = main.socket.createEventSocket('hold');
-				_sockets.hold.listen(function() {
-					$('#mousepad').removeClass('tapused');
-				});
-
-				_sockets.scroll = main.socket.createEventSocket('scroll');
-				_sockets.scroll.listen(function() {
-					// $('#mousepadcontrols-right').removeClass('tapused');
-				});
-			});
 		});
 	};
 
