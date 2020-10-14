@@ -16,15 +16,16 @@ module.exports = {
 	init: function(pServerPort, pServerApiBasePath) {
 		console.log('api init');
 
-		server.get(pServerApiBasePath + '/init', function(req, res){
-			res.send('"Hello World!"');
-		});
+		console.log('configuring routes');
+
+		server.get(pServerApiBasePath + '/init', require('./../routes/init'));
+		server.get(pServerApiBasePath + '/login', require('./../routes/login'));
 
 		server.listen(pServerPort, function(){
-			console.log(`Example app listening at http://localhost:${pServerPort}`);
+			console.log(`api listening at http://localhost:${pServerPort}`);
 		});
 
-		
+
 /*
 		var _connect = connect();
 

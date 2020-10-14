@@ -37,7 +37,7 @@ var nrc = nrc || {};
 	 * private methods
 	 */
 	var _login = function(pCallback) {
-		$.get(_serverUrl + '/rest/user/login', function(pUser) {
+		$.get(_serverUrl + '/login', function(pUser) {
 			main.utils.log('logged in as', pUser);
 
 			main.socket.init(function() {

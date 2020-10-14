@@ -1,7 +1,5 @@
 var process = require('process');
 
-var api = require('./api/api');
-
 var cfg = null;
 
 // read config
@@ -12,4 +10,5 @@ try {
 	process.exit(1);
 }
 
+var api = require('./api/api');
 api.init(cfg.serverPort, cfg.serverApiPath);
