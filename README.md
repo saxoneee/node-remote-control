@@ -35,9 +35,9 @@ simple node.js/android app to remotly control the mouse cursor of windows.
 - only once:
     + `npm install`
     + `bower install`
-- `grunt dev` - browser
-- `grunt emulator` - start android emulator
-- `grunt emulate` - build app and run in emulator
+    + `npm run prepare`
+- `npm run dev` - browser
+- `npm run run` - start app in android emulator
 
 ## Usage
 

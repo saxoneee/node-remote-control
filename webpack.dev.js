@@ -23,7 +23,8 @@ module.exports = {
 
 	plugins: [
 		new WebpackShellPlugin({
-			onBuildStart: 'node ./src/serv/app.js'
+			onBuildStart: 'node-sass src/www/styles/remote-control.scss .tmp/styles/remote-control.css',
+			onBuildEnd: 'node ./src/serv/app.js'
 		})
 	]
 };
