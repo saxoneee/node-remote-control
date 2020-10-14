@@ -1,5 +1,5 @@
-var path = require('path');
-var WebpackShellPlugin = require('webpack-shell-plugin');
+var path = require('path'),
+	WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
 	entry: './index.js',

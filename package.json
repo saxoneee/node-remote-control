@@ -4,7 +4,8 @@
 	"description": "simple node.js/android app to remotly control the mouse cursor of windows.",
 	"version": "0.2.0",
 	"scripts": {
-		"dev": "./node_modules/.bin/webpack serve --config webpack.config.js"
+		"dev": "./node_modules/.bin/webpack serve --config webpack.dev.js",
+		"prepare": "./node_modules/.bin/cordova prepare"
 	},
 	"repository": {
 		"type": "https",

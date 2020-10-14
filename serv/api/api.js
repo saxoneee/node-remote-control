@@ -1,20 +1,15 @@
 var express = require('express'),
-	server = express(),
-	path = require('path');
-
-// var configApi = require(app.path.rest + '/config'),
-// 	userApi = require(app.path.rest + '/user');
+	server = express();
 
 module.exports = {
 	/**
-	 * start the server
+	 * start the api
 	 *
-	 * @param  {Number} pPort Port, auf den gehört wird
-	 * @param  {Function} pCallback Callback nach Start
-	 * @return {[type]}           [description]
+	 * @param  {Number} pPort
+	 * @param  {String} pServerApiBasePath
 	 */
 	init: function(pServerPort, pServerApiBasePath) {
-		console.log('api init');
+		console.log('tcp api init');
 
 		console.log('configuring routes');
 
@@ -22,7 +17,7 @@ module.exports = {
 		server.get(pServerApiBasePath + '/login', require('./../routes/login'));
 
 		server.listen(pServerPort, function(){
-			console.log(`api listening at http://localhost:${pServerPort}`);
+			console.log(`tcp api listening at http://localhost:${pServerPort}`);
 		});
 
 
