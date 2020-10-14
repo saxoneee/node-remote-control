@@ -1,15 +1,9 @@
-/**
- * Modul zum Starten eines Servers
- */
-var log = new(require(app.path.base + '/logging'))(__filename);
-
-var connect = require('connect'),
-	http = require('http'),
-	serveStatic = require('serve-static'),
+var express = require('express'),
+	server = express(),
 	path = require('path');
 
-var configApi = require(app.path.rest + '/config'),
-	userApi = require(app.path.rest + '/user');
+// var configApi = require(app.path.rest + '/config'),
+// 	userApi = require(app.path.rest + '/user');
 
 module.exports = {
 	/**
@@ -19,9 +13,19 @@ module.exports = {
 	 * @param  {Function} pCallback Callback nach Start
 	 * @return {[type]}           [description]
 	 */
-	startup: function(pPort, pFrontendPaths, pCallback) {
-		log.log('server startup');
+	init: function(pServerPort, pServerApiBasePath) {
+		console.log('api init');
 
+		server.get(pServerApiBasePath + '/init', function(req, res){
+			res.send('"Hello World!"');
+		});
+
+		server.listen(pServerPort, function(){
+			console.log(`Example app listening at http://localhost:${pServerPort}`);
+		});
+
+		
+/*
 		var _connect = connect();
 
 		// cookie middleware for sessions
@@ -36,11 +40,12 @@ module.exports = {
 		_connect.use('/rest/config', configApi);
 		_connect.use('/rest/user', userApi);
 
-		// serve frontends
-		for (var i = 0; i < pFrontendPaths.length; i++) {
-			var _frontendPath = path.join(__filename, '..', '..', pFrontendPaths[i]);
-			_connect.use(serveStatic(_frontendPath));
-		}
+		// to remove: 
+		// // serve frontends
+		// for (var i = 0; i < pFrontendPaths.length; i++) {
+		// 	var _frontendPath = path.join(__filename, '..', '..', pFrontendPaths[i]);
+		// 	_connect.use(serveStatic(_frontendPath));
+		// }
 
 		var _server = http.createServer(_connect).listen(pPort);
 
@@ -57,6 +62,6 @@ module.exports = {
 			}
 		});
 
-		return _server;
+		return _server;*/
 	}
 };

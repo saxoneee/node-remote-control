@@ -15,14 +15,16 @@ var nrc = nrc || {};
 	var _cursorStartPosTop = null;
 	var _cursorStartPosLeft = null;
 
+	var _serverUrl = 'http://localhost:8000/api/v1';
+
 	/**
 	 * construct
 	 */
 	$(document).ready(function() {
 		var _splashMessage = $('#appLoadingIndicatorLabel');
 
-		_splashMessage.html('load config...');
-		$.get('/rest/config', function(pConfig) {
+		_splashMessage.html('init...');
+		$.get(_serverUrl + '/init', function(pConfig) {
 			main.server.config = pConfig;
 			_splashMessage.html('login...');
 			_login(function() {
@@ -35,7 +37,7 @@ var nrc = nrc || {};
 	 * private methods
 	 */
 	var _login = function(pCallback) {
-		$.get('/rest/user/login', function(pUser) {
+		$.get(_serverUrl + '/rest/user/login', function(pUser) {
 			main.utils.log('logged in as', pUser);
 
 			main.socket.init(function() {

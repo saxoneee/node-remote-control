@@ -1,11 +1,6 @@
 {
-	"mode": "dev",
-	"modules": {},
+	"name": "node-remote-control-server",
+	"version": "0.0.1",
 	"serverPort": "8008",
-	"debugLogLevel": "debug",
-	"frontend": [
-		"../.tmp",
-		"../bower",
-		"../www"
-	]
+	"serverApiPath": "/api/v1"
 }
