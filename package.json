@@ -3,6 +3,9 @@
 	"displayName": "node-remote-control",
 	"description": "simple node.js/android app to remotly control the mouse cursor of windows.",
 	"version": "0.2.0",
+	"scripts": {
+		"dev": "./node_modules/.bin/webpack serve --config webpack.config.js"
+	},
 	"repository": {
 		"type": "https",
 		"url": "https://github.com/saxoneee/node-remote-control.git"
@@ -41,7 +44,10 @@
 		"grunt-exec": "^3.0.0",
 		"grunt-task-loader": "^0.6.0",
 		"gruntify-eslint": "^5.0.0",
-		"jshint-stylish": "^2.2.1"
+		"jshint-stylish": "^2.2.1",
+		"webpack": "^5.1.0",
+		"webpack-cli": "^4.0.0",
+		"webpack-dev-server": "^3.11.0"
 	},
 	"cordova": {
 		"plugins": {
