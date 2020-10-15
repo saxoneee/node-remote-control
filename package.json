@@ -4,9 +4,14 @@
 	"description": "simple node.js/android app to remotly control the mouse cursor of windows.",
 	"version": "0.2.0",
 	"scripts": {
-		"dev": "./node_modules/.bin/webpack serve --config webpack.dev.js",
-		"prepare": "./node_modules/.bin/cordova prepare",
-		"run": "./node_modules/.bin/webpack --config webpack.cordova.js"
+		"dev": "webpack serve --config webpack.dev.js",
+		"prepare": "cordova prepare",
+		"run": "concurrently \"webpack --config webpack.cordova.js\" \"node src/serv/app.js\""
+	},
+	"bin": {
+		"cordova": "./node_modules/.bin/cordova",
+		"concurrently": "./node_modules/.bin/concurrently",
+		"webpack": "./node_modules/.bin/webpack"
 	},
 	"repository": {
 		"type": "https",
@@ -32,6 +37,7 @@
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^3.0.0",
+		"concurrently": "^5.3.0",
 		"copy-webpack-plugin": "^6.2.1",
 		"cordova-android": "^9.0.0",
 		"cordova-plugin-enable-cleartext-traffic": "^2.1.0",
