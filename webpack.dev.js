@@ -9,7 +9,7 @@ module.exports = {
 
 	devServer: {
 		contentBase: [
-			path.join(__dirname, 'src', 'www'),
+			path.join(__dirname, 'src', 'app'),
 			path.join(__dirname, 'bower'),
 			path.join(__dirname, '.tmp'),
 		],
@@ -23,7 +23,7 @@ module.exports = {
 
 	plugins: [
 		new WebpackShellPlugin({
-			onBuildStart: 'node-sass src/www/styles/remote-control.scss .tmp/styles/remote-control.css',
+			onBuildStart: 'node-sass src/app/styles/remote-control.scss .tmp/styles/remote-control.css',
 			onBuildEnd: 'node ./src/serv/app.js'
 		})
 	]

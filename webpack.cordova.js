@@ -3,7 +3,7 @@ var path = require('path'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-var _wwwDir = path.join(__dirname, 'src', 'www'),
+var _srcDir = path.join(__dirname, 'src', 'app'),
     _destDir = path.join(__dirname, 'www');
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
                 from: '.tmp/styles/',
                 to: _destDir + '/styles'
             },{
-                from: _wwwDir,
+                from: _srcDir,
                 to: _destDir
             },{
                 from: 'bower',
@@ -27,7 +27,7 @@ module.exports = {
             }]
         }),
 		new WebpackShellPlugin({
-			onBuildEnd: '"./node_modules/.bin/cordova" run'
+			onBuildEnd: '"./node_modules/.bin/cordova" emulate --nobuild'
         })
 	]
 };
