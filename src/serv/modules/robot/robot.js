@@ -1,14 +1,25 @@
-var log = new(require(app.path.base + '/logging'))(__filename);
+// var log = new(require(app.path.base + '/logging'))(__filename);
 
 var robot = require('robotjs');
 
 module.exports = function() {
-	log.log('init robot');
+	console.log('init robot');
 
 	var _cursorStartPosTop = null,
 		_cursorStartPosLeft = null;
 
 	return {
+		tap: function() {
+			robot.mouseClick('left');
+		},
+		dtap: function() {
+			robot.mouseClick('left', true);
+		},
+		rtap: function() {
+			robot.mouseClick('right');
+		},
+
+
 		swipe: function(pEventArgs, pResponder) {
 			if (_cursorStartPosTop === null) {
 				var _mousePos = robot.getMousePos();
@@ -25,18 +36,6 @@ module.exports = function() {
 				robot.moveMouse(_newPosLeft, _newPosTop);
 			}
 			pResponder(pEventArgs);
-		},
-		tap: function(pEventArgs, pResponder) {
-			robot.mouseClick('left');
-			pResponder();
-		},
-		dtap: function(pEventArgs, pResponder) {
-			robot.mouseClick('left', true);
-			pResponder();
-		},
-		rtap: function(pEventArgs, pResponder) {
-			robot.mouseClick('right');
-			pResponder();
 		},
 		hold: function(pEventArgs, pResponder) {
 			robot.mouseClick('right');

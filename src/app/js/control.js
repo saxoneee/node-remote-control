@@ -1,4 +1,8 @@
 (function(main) {
+
+	var _doAction = function(pArgs){
+		$.get(main.cfg.serverUrl + '/control', pArgs);
+	}
 	
 	var _swipeHandler = function(pScrollDirection) {
 		return function(event, phase) {
@@ -66,7 +70,24 @@ console.log('swipehandler', pScrollDirection);
 	var control = {
 		init: function(){
 			console.log('control init');
+			
 
+			var _x = 0;
+			$('#mousepadcontrols-right').swipe({
+				tap: function(){
+					_doAction({type: 'rtap'});
+				}
+			});
+			
+			$('#mousepadcontrols-left').swipe({
+				tap: function(){
+					_doAction({type: 'tap'});
+				},
+				doubleTap: function(){
+					_doAction({type: 'dtap'});
+				}
+			});
+	
 			$('#mousepad').swipe({
 				swipe: function() {
 					console.log('swipe end');
@@ -85,14 +106,6 @@ console.log('swipehandler', pScrollDirection);
 				threshold: 5
 			});
 
-			$('#mousepadcontrols-right').on('click',function() {
-				console.log('right click');
-			});
-	
-			$('#mousepadcontrols-left').on('click',function() {
-				console.log('left click');
-			});
-	
 			$('#mousepadcontrols-wheel').swipe({
 				swipe: function() {
 					console.log('wheel swipe end');

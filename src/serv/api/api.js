@@ -15,6 +15,7 @@ module.exports = {
 
 		server.get(pServerApiBasePath + '/init', require('./../routes/init'));
 		server.get(pServerApiBasePath + '/login', require('./../routes/login'));
+		server.get(pServerApiBasePath + '/control', require('./../routes/control'));
 
 		server.listen(pServerPort, function(){
 			console.log(`tcp api listening at http://localhost:${pServerPort}`);
