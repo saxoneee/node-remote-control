@@ -1,19 +1,19 @@
 # node remote control
 
-simple node.js/android app to remotly control the mouse cursor of windows.
+simple node.js/android app to remotly control the mouse cursor of windows. it uses tcp and insecure http, so watch out.
 
 ## Requirements
 
-- node.js 4.2.6 (maybe more versions are supported)
-- [compass](http://compass-style.org/)
-- [bower](https://bower.io/)
+- node.js
+- compass
+- bower
 - windows OS (tested on Win10)
-- android smartphone with chrome browser (I didn't test other browsers yet)
+- android smartphone
 
 ### Android App Emulation
 
-- Cordova 10.0.0
-- Android Studio 4.0.2
+- Cordova
+- Android Studio
 - Gradle
 - jdk 1.8
 - Apache Ant
@@ -28,7 +28,6 @@ simple node.js/android app to remotly control the mouse cursor of windows.
     + install Android 10.0 and accept the terms
     + import the phonegap project and create an emulator via Android Virtual Device Manager
         * name "Nexus 5X API 29"
-- open cordova/www/index.html and change the internal ip-address to your own
 
 ## Development
 
